@@ -198,9 +198,9 @@ ol li {
 </head>
 <body style="background-color:grey;height: 2890px; width: 100%;">
 
-<button class="button">ABOUT US</button>
-<button class="button button2">ACHIEVEMENTS</button>
-<button class="button button3">FIND BLOOD DONORS</button>
+<button class="button" onclick="openWin()">ABOUT US</button>
+<button class="button button2" >ACHIEVEMENTS</button>
+<button class="button button3" onclick="openWin2()">FIND BLOOD DONORS</button>
 <button class="button button5">CONTACT US</button>
 
 <img src="KRP Blood Bank-logos_black.png" alt="logo" style="width:100px;height:100px;position: relative;left:-770px">
@@ -279,6 +279,15 @@ ol li {
 </div>
 
 <script>
+
+function openWin() {
+  window.open("aboutus.html");
+}
+
+function openWin2() {
+  window.open("FindBloodDonors.html");
+}
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
