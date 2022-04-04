@@ -8,9 +8,15 @@
 
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0; 
+  /* padding: 0; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-image: url('bg4.jpg');
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 2890px; width: 100%;
   background-size: cover;}
 .mySlides {display: none}
 img {vertical-align: middle;}
@@ -207,14 +213,14 @@ ol li {
 
 <img src="register.gif" alt="register" style="position: relative;top:600px; left:-850px">
 
-<button class="regbut">REGISTER AS A DONOR</button>
+<button class="regbut" onclick="openWin4()">REGISTER AS A DONOR</button>
 <form>
 <div class="container" style = "position:absolute; left:1200px; top:590px; background-color: lightblue;"> Donor Login <br> <br> 
   <label>Username : </label>   
   <input type="text" placeholder="Enter Username" name="username" required>  
   <label>Password : </label>   
   <input type="password" placeholder="Enter Password" name="password" required>  
-  <button type="submit" class="zigg">Login</button>   
+  <button type="submit" class="zigg" onclick="openWin3()">Login</button>   
   <input type="checkbox" checked="checked"> Remember me   
   <a href="#"> Forgot password? </a>
 </div>
@@ -286,6 +292,14 @@ function openWin() {
 
 function openWin2() {
   window.open("FindBloodDonors.html");
+}
+
+function openWin3() {
+  window.open("donardashboard.html");
+}
+
+function openWin4() {
+  window.open("donor-registration.html");
 }
 
 var slideIndex = 1;
