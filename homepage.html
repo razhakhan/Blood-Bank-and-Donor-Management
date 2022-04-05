@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1 ,shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <style>
 
 /* SLIDESHOW PART */
@@ -110,6 +112,36 @@ img {vertical-align: middle;}
   to {opacity: 1}
 }
 
+/* new2 */
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 17px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  p {
+    font-size: 1em;
+    margin-bottom: 1.8em;
+  }
+}
+/* new2 */
+
+/* new */
+.navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+/* new */
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
@@ -185,8 +217,8 @@ img {vertical-align: middle;}
   background-color: lightblue; 
   width: 600px;
   position: absolute;
-  top:1170px;
-  left:470px;
+  top:1000px; 
+  left: 1200px;
 }
 
 ol {
@@ -202,7 +234,7 @@ ol li {
 
 </style>
 </head>
-<body style="background-color:grey;height: 2890px; width: 100%;">
+<body style="background-color:grey;height: 2890px;overflow-x: hidden;">
 
 <button class="button" onclick="openWin()">ABOUT US</button>
 <button class="button button2" >ACHIEVEMENTS</button>
@@ -226,6 +258,8 @@ ol li {
 </div>
 </form>
 
+<img src="114b4949772999.58be6bb04dd9f.gif" style="height: 50%; width: 40%; position: absolute; top:1150px; left:290px;">
+
 <img src="donationFact.webp" alt="sol" style="position: absolute; top:1960px ;left:1050px">
 
 <img src="btype.png" alt="sol" style="position: absolute; top:2365px ;left:25px">
@@ -241,6 +275,8 @@ ol li {
     <li>Vladmir Putin, Russia</li>
   </ol>
 </div>
+
+<img src="e29e1d49772999.58be6bafd484d.gif" style="height: 35%; width: 49%; position: absolute; top:1960px; left: 25px">
 
 <div class="slideshow-container">
 
