@@ -1,87 +1,48 @@
+<?php
+require 'includes/config.php';
+if(!empty($_SESSION["id"])){
+  header("Location: homepage.php");
+}
+if(isset($_POST["submit"])){
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $number = $_POST['phno'];
+    $password = $_POST['password'];
+    $confirmpassword = $_POST['cpassword'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['optradio'];
+    $bloodgrp = $_POST['bloodgroup'];
+    $address = $_POST['Address'];
+  $duplicate = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$email' ");
+  if(mysqli_num_rows($duplicate) > 0){
+    echo
+    "<script> alert('Email Has Already Taken'); </script>";
+  }
+  else{
+    if($password == $confirmpassword){
+      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$number', '$password', '$dob', '$gender', '$bloodgrp', '$address')";
+      mysqli_query($conn, $query);
+      echo
+      "<script> alert('Registration Successful'); </script>";
+
+      echo
+      "<script > window.close(); </script>";
+    }
+    else{
+      echo
+      "<script> alert('Password Does Not Match'); </script>";
+    }
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-  
-<style>
-.box img {
-    width: 100%;
-    height: 100%;
-}
-input[type=text], select, textarea {
-  width: 50%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-label {
-  padding: 6px 6px 6px 0;
-  display: inline-block;
-  width:50%
-}
-
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-
-.container {
-  border-radius: 5px;
-  /*background-color: #ac9d9e;*/
-  padding: 24px;
-  background-image: url('hero.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  
-}
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: right;
-  width: 75%;
-  margin-top: 6px;
-
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.Button{
-  margin: 50px;
-  width: 50%;
-  content: "";
-  display: table;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 100px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 50%;
-    margin-top: 0;
-  }
-}
-</style>
+<link rel="stylesheet" href="css/regstyle.css">
 </head>
+
 <body style="background-color:powderblue;">
 
 <h2 style="text-align: center;"><b>DONOR REGISTRATION</b></h2>
@@ -89,7 +50,7 @@ input[type=submit]:hover {
 
 <div class="container">
   
-  <form action="/action_page.php">
+  <form class="" action="" method="post" autocomplete="off">
     <div class="row">
       <div class="col-25">
         <label for="fname">First Name</label>
@@ -111,9 +72,17 @@ input[type=submit]:hover {
           <label for="emailid">Email</label>
         </div>
         <div class="col-75">
-          <input type="text" id="emailid" name="lastname" placeholder="Email">
+          <input type="text" id="emailid" name="email" placeholder="Email">
         </div>
     </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="phno">Phone No.</label>
+      </div>
+      <div class="col-75">
+        <input type="tel" id="phno" name="phno" placeholder="Phone Number">
+      </div>
+  </div>
     <div class="row">
         <div class="col-25">
           <label for="password">Password</label>
@@ -127,15 +96,15 @@ input[type=submit]:hover {
           <label for="cpassword">Confirm Password</label>
         </div>
         <div class="col-75">
-          <input type="text" id="cpassword" name="cpassword" placeholder=" confirm password">
+          <input type="password" id="cpassword" name="cpassword" placeholder=" Confirm Password" style="width:564px;height: 40px;">
         </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="dateofbirth">DOB</label>
+        <label for="dob">DOB</label>
       </div>
       <div class="col-75">
-        <input type="text" id="dob" name="DOB" placeholder="mm-dd-yyyy">
+        <input type="text" id="dob" value="" name="dob" placeholder="mm-dd-yyyy">
       </div>
   </div>
     <div class="row">
@@ -144,13 +113,13 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
        <label class="radio-inline">
-       <input type="radio" name="optradio" checked>Male
+       <input type="radio" value= "m" name="optradio" checked>Male
        </label>
        <label class="radio-inline">
-       <input type="radio" name="optradio">Female
+       <input type="radio" value="f" name="optradio">Female
        </label>
        <label class="radio-inline">
-       <input type="radio" name="optradio">Others
+       <input type="radio" value="o" name="optradio">Others
        </label>
       </div>
     </div>
@@ -159,7 +128,7 @@ input[type=submit]:hover {
         <label for="bloood group"> Blood group </label>
       </div>
       <div class="col-75">
-        <select id="blood group" name="blood group">
+        <select class="" id="bloodgroup" name="bloodgroup" >
           <option value="O+">O+</option>
           <option value="A+">A+</option>
           <option value="B+">B+</option>
@@ -181,7 +150,7 @@ input[type=submit]:hover {
       </div>
     </div>
     <div class="Button">
-        <input type="submit" value="SUBMIT">
+        <input type="submit" name="submit">
       </div>
   </form>
   </div>
