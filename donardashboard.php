@@ -14,6 +14,17 @@ else{
 <html>
 <head>
   <link rel="stylesheet" href="css/dashstyle.css">
+  <style>
+    .container {
+      border-radius: 5px;
+      /*background-color: #ac9d9e;*/
+      padding: 24px;
+      background-image: url('../images/saveblood.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+  </style>
 </head>
 <body>
 

@@ -2,76 +2,25 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="css/searchstyle.css">
 <script src="js/cities.js"></script>
 </head>
-
-<style>
-
-body { font-family: Verdana, sans-serif; margin:0; 
-  background-image: url('images/find_giff.gif');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; }
-
-
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: palevioletred;
-  padding: 20px;
-}
-</style>
-
 
 <body>
 
 <h3 style="color: black; background-color: palevioletred; text-align: center; font-size: x-large">Search for Blood Donors</h3>
 
 <div style="position: relative; top:200px">
-  <form>
+  <form action="displaydonors.php" method="post">
     <label for="country" style="text-align: center;" >Blood Type</label>
     <select id="country" name="country">
         <option value="Select">-----Select-----</option>
         <option value="A+">A+</option>
         <option value="A-">A-</option>
-        <option value="A1+">A1+</option>
-        <option value="A1-">A1-</option>
-        <option value="A1B+">A1B+</option>
-        <option value="A1B-">A1B-</option>
-        <option value="A2+">A2+</option>
-        <option value="A2-">A2-</option>
-        <option value="A2B+">A2B+</option>
-        <option value="A2B-">A2B-</option>
         <option value="AB+">AB+</option>
         <option value="AB-">AB-</option>
         <option value="B+">B+</option>
         <option value="B-">B-</option>
-        <option value="Bombay Blood Group">Bombay Blood Group</option>
-        <option value="INRA">INRA</option>
         <option value="O+">O+</option>
         <option value="O-">O-</option>
     </select>
@@ -79,10 +28,10 @@ div {
     <label for="country">State</label>
     <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="form-control" required></select>
     <label for="country">City</label>
-    <select id ="state" class="form-control" required></select>
+    <select id ="state" name = "state" class="form-control" required></select>
     <script language="javascript">print_state("sts");</script>
   
-    <input type="submit" value="SEARCH">
+    <input type="submit" name="submit" value="submit">
   </form>
 </div>
 

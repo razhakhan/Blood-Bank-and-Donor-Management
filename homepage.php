@@ -16,7 +16,7 @@ if(isset($_POST["submit"])){
     }
     else{
       echo
-      "<script> alert('Wrong Password'); </script>";
+      "<script> alert('login unsuccessful, invalid password'); </script>";
     }
   }
   else{

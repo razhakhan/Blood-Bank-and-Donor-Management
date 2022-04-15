@@ -13,15 +13,38 @@ if(isset($_POST["submit"])){
     $dob = $_POST['dob'];
     $gender = $_POST['optradio'];
     $bloodgrp = $_POST['bloodgroup'];
+    $state = $_POST['stt'];
+    $city = $_POST['state'];
     $address = $_POST['Address'];
-  $duplicate = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$email' ");
+    $duplicate = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$email' ");
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $date=explode("-",$_POST['dob']);
+    $specialChars = preg_match('@[^\w]@', $password);
   if(mysqli_num_rows($duplicate) > 0){
     echo
-    "<script> alert('Email Has Already Taken'); </script>";
+    "<script> alert('Email already exists, please login'); </script>";
   }
   else{
-    if($password == $confirmpassword){
-      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$number', '$password', '$dob', '$gender', '$bloodgrp', '$address')";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo
+      "<script> alert('invalid email format'); </script>";
+    }
+    elseif(! (preg_match('/^[6-9][0-9]{9}$/', $number)) ) {
+      echo
+      "<script> alert('invalid phone number'); </script>";
+    }
+    elseif( !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2]) || ! (checkdate ($date[1] ,$date[0] ,$date[2])) )
+    {
+        echo "<script> alert('invalid date format'); </script>";
+    }
+    elseif(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+        echo
+      "<script> alert('Password should be at least 8 characters, at least one number, one upper case letter and one special character.'); </script>";
+    }
+    elseif($password == $confirmpassword){
+      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$number', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address')";
       mysqli_query($conn, $query);
       echo
       "<script> alert('Registration Successful'); </script>";
@@ -41,6 +64,7 @@ if(isset($_POST["submit"])){
 <html>
 <head>
 <link rel="stylesheet" href="css/regstyle.css">
+<script src="js/cities.js"></script>
 </head>
 
 <body style="background-color:powderblue;">
@@ -104,7 +128,7 @@ if(isset($_POST["submit"])){
         <label for="dob">DOB</label>
       </div>
       <div class="col-75">
-        <input type="text" id="dob" value="" name="dob" placeholder="mm-dd-yyyy">
+        <input type="text" id="dob" value="" name="dob" placeholder="dd-mm-yyyy">
       </div>
   </div>
     <div class="row">
@@ -141,6 +165,28 @@ if(isset($_POST["submit"])){
         </select>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="stt"> State </label>
+      </div>
+      <div class="col-75">
+      <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="form-control" required></select>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="state"> City </label>
+      </div>
+      <div class="col-75">
+    <select id ="state" name="state" class="form-control" required></select>
+    <script language="javascript">print_state("sts");</script>
+    </select>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-25">
         <label for="Address">Address</label>
