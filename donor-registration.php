@@ -7,7 +7,7 @@ if(isset($_POST["submit"])){
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $number = $_POST['phno'];
+    $numb = $_POST['phno'];
     $password = $_POST['password'];
     $confirmpassword = $_POST['cpassword'];
     $dob = $_POST['dob'];
@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
       echo
       "<script> alert('invalid email format'); </script>";
     }
-    elseif(! (preg_match('/^[6-9][0-9]{9}$/', $number)) ) {
+    elseif(! (preg_match('/^[6-9][0-9]{9}$/', $numb)) ) {
       echo
       "<script> alert('invalid phone number'); </script>";
     }
@@ -44,7 +44,7 @@ if(isset($_POST["submit"])){
       "<script> alert('Password should be at least 8 characters, at least one number, one upper case letter and one special character.'); </script>";
     }
     elseif($password == $confirmpassword){
-      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$number', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address')";
+      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$numb', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address')";
       mysqli_query($conn, $query);
       echo
       "<script> alert('Registration Successful'); </script>";
