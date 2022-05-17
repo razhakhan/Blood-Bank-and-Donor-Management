@@ -24,8 +24,27 @@ if(isset($_POST["submit"])){
 <title>Find Donors</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/modern-business.css" rel="stylesheet">
+<style>
+.button {
+  background-color: darkred;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
 </head>
-
+<script>
+    function openWin() {
+        window.close();
+        window.open('FlagContactUs.php');
+    }
+</script> 
 <body>
 
 <h2><b>AVAILABLE DONORS : </b></h2>
@@ -49,6 +68,9 @@ if(isset($_POST["submit"])){
                             <p class="card-text"> <b> Gender :</b> <?php echo $res["gender"];?></p>
                             <p class="card-text"> <b> Date of Birth :</b> <?php echo $res["dob"];?> </p>
                             <p class="card-text"> <b> Address :</b> <?php echo $res["address"];?></p>
+                            <form action="displaydonors.php" method="post">
+                            <button onclick="openWin()" type="submit" name="button1" class="button">Flag as fake/wrong details</button>
+                            </form>
                         </div>
                     </div>
                     </div>

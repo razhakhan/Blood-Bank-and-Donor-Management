@@ -8,6 +8,61 @@ if(!empty($_SESSION["id"])){
 else{
   header("Location: homepage.php");
 }
+
+if(isset($_POST["submit"])){
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $email = $_POST['email'];
+  $numb = $_POST['phno'];
+  $dob = $_POST['dob'];
+  $gender = $_POST['optradio'];
+  $bloodgrp = $_POST['bloodgroup'];
+  $state = $_POST['stt'];
+  $city = $_POST['state'];
+  $address = $_POST['Address'];
+  $duplicate = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$email' ");
+  $uppercase = preg_match('@[A-Z]@', $password);
+  $lowercase = preg_match('@[a-z]@', $password);
+  $number    = preg_match('@[0-9]@', $password);
+  $date=explode("-",$_POST['dob']);
+  $specialChars = preg_match('@[^\w]@', $password);
+// if(mysqli_num_rows($duplicate) > 0){
+//   echo
+//   "<script> alert('Email already exists, please login'); </script>";
+// }
+// else{
+//   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//     echo
+//     "<script> alert('invalid email format'); </script>";
+//   }
+//   elseif(! (preg_match('/^[6-9][0-9]{9}$/', $numb)) ) {
+//     echo
+//     "<script> alert('invalid phone number'); </script>";
+//   }
+//   elseif( !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2]) || ! (checkdate ($date[1] ,$date[0] ,$date[2])) )
+//   {
+//       echo "<script> alert('invalid date format'); </script>";
+//   }
+  // else {
+  // $query = "UPDATE donors SET firstname=$firstname, lastname=$lastname, email=$email, number=$numb,dob=$dob, gender=$gender, bloodgrp=$bloodgrp, address=$address  WHERE id=16";
+  // mysqli_query($conn, $query);
+  // echo
+  // "<script> alert('Update Successful'); </script>";
+
+  //   echo
+  //   "<script > window.close(); </script>";
+  // }
+  $sql = "UPDATE donors SET lastname='Doe' WHERE id=2";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Record updated successfully";
+} else {
+  echo "Error updating record: " . $conn->error;
+}
+}
+
+// }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +81,7 @@ else{
     }
   </style>
 </head>
+<script src="js/cities.js"></script>
 <body>
 
 <h2><b>DONOR DASHBOARD</b></h2>
@@ -33,7 +89,7 @@ else{
 
 <div class="container">
   
-  <form action="/action_page.php">
+  <form class="" action="" method="post" autocomplete="off">
     <div class="row">
       <div class="col-25">
         <label for="fname">First Name</label>
@@ -57,6 +113,14 @@ else{
         <div class="col-75">
           <input type="text" id="emailid" name="lastname" value=<?php echo $row["email"]; ?>>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="phno">Phone No.</label>
+      </div>
+      <div class="col-75">
+        <input type="tel" id="phno" name="phno" value=<?php echo $row["number"]; ?>>
+      </div>
     </div>
     <div class="row">
       <div class="col-25">
@@ -100,6 +164,30 @@ else{
         </select>
       </div>
     </div>
+
+    <!-- <div class="row">
+      <div class="col-25">
+        <label for="stt"> State </label>
+      </div>
+      <div class="col-75">
+      <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="form-control" required></select>
+          
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="state"> City </label>
+      </div>
+      <div class="col-75">
+    <select id ="state" name="state" class="form-control" required></select>
+    <script language="javascript">print_state("sts");</script>
+    </select>
+      </div>
+    </div> -->
+
+
     <div class="row">
       <div class="col-25">
         <label for="Address">Address</label>
@@ -117,5 +205,6 @@ else{
 
   </form>
   </div>
+
 </body>
 </html>
