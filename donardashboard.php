@@ -1,15 +1,23 @@
 <?php
-require 'includes/config.php';
-if(!empty($_SESSION["id"])){
-  $id = $_SESSION["id"];
-  $result = mysqli_query($conn, "SELECT * FROM donors WHERE id = $id");
-  $row = mysqli_fetch_assoc($result);
-}
-else{
-  header("Location: homepage.php");
+session_start();
+$mysqli = new mysqli("localhost", "root", "", "donorsdb");
+ 
+// Check connection
+if($mysqli === false){
+    die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
 
-if(isset($_POST["submit"])){
+if(!empty($_SESSION["id"])){
+    $id = $_SESSION["id"];
+    $result = mysqli_query($mysqli, "SELECT * FROM donors WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+  }
+  else{
+    header("Location: homepage.php");
+  }
+
+if(isset($_POST["submit"])) {
+  // Attempt update query execution
   $firstname = $_POST['firstname'];
   $lastname = $_POST['lastname'];
   $email = $_POST['email'];
@@ -20,49 +28,34 @@ if(isset($_POST["submit"])){
   $state = $_POST['stt'];
   $city = $_POST['state'];
   $address = $_POST['Address'];
-  $duplicate = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$email' ");
-  $uppercase = preg_match('@[A-Z]@', $password);
-  $lowercase = preg_match('@[a-z]@', $password);
-  $number    = preg_match('@[0-9]@', $password);
+  $duplicate = mysqli_query($mysqli, "SELECT * FROM donors WHERE email = '$email' ");
   $date=explode("-",$_POST['dob']);
-  $specialChars = preg_match('@[^\w]@', $password);
-// if(mysqli_num_rows($duplicate) > 0){
-//   echo
-//   "<script> alert('Email already exists, please login'); </script>";
-// }
-// else{
-//   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//     echo
-//     "<script> alert('invalid email format'); </script>";
-//   }
-//   elseif(! (preg_match('/^[6-9][0-9]{9}$/', $numb)) ) {
-//     echo
-//     "<script> alert('invalid phone number'); </script>";
-//   }
-//   elseif( !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2]) || ! (checkdate ($date[1] ,$date[0] ,$date[2])) )
-//   {
-//       echo "<script> alert('invalid date format'); </script>";
-//   }
-  // else {
-  // $query = "UPDATE donors SET firstname=$firstname, lastname=$lastname, email=$email, number=$numb,dob=$dob, gender=$gender, bloodgrp=$bloodgrp, address=$address  WHERE id=16";
-  // mysqli_query($conn, $query);
-  // echo
-  // "<script> alert('Update Successful'); </script>";
 
-  //   echo
-  //   "<script > window.close(); </script>";
-  // }
-  $sql = "UPDATE donors SET lastname='Doe' WHERE id=2";
 
-if ($conn->query($sql) === TRUE) {
-  echo "Record updated successfully";
-} else {
-  echo "Error updating record: " . $conn->error;
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo
+      "<script> alert('invalid email format'); </script>";
+  }
+  elseif(! (preg_match('/^[6-9][0-9]{9}$/', $numb)) ) {
+      echo
+      "<script> alert('invalid phone number'); </script>";
+  }
+  elseif( !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2]) || ! (checkdate ($date[1] ,$date[0] ,$date[2])) )
+  {
+        echo "<script> alert('invalid date format'); </script>";
+  }
+  else {
+    $sql = "UPDATE donors SET firstname='$firstname', lastname='$lastname', email='$email', number=$numb, dob='$dob', gender='$gender', bloodgrp='$bloodgrp', state='$state', city='$city', address='$address' WHERE id=$id ";
+    if($mysqli->query($sql) === true){
+        echo "Records were updated successfully.";
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+    }
+  }
 }
-}
-
-// }
-// }
+ 
+// Close connection
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -111,7 +104,7 @@ if ($conn->query($sql) === TRUE) {
           <label for="emailid">Email</label>
         </div>
         <div class="col-75">
-          <input type="text" id="emailid" name="lastname" value=<?php echo $row["email"]; ?>>
+          <input type="text" id="emailid" name="email" value=<?php echo $row["email"]; ?>>
         </div>
     </div>
     <div class="row">
@@ -127,7 +120,7 @@ if ($conn->query($sql) === TRUE) {
         <label for="dateofbirth">DOB</label>
       </div>
       <div class="col-75">
-        <input type="text" id="dob" name="DOB" value=<?php echo $row["dob"]; ?>>
+        <input type="text" id="dob" name="dob" value=<?php echo $row["dob"]; ?>>
       </div>
   </div>
     <div class="row">
@@ -136,13 +129,13 @@ if ($conn->query($sql) === TRUE) {
       </div>
       <div class="col-75">
        <label class="radio-inline">
-       <input type="radio" name="optradio" <?php if ($row["gender"]=='m' ) echo 'checked'?> >Male
+       <input type="radio" value="m" name="optradio" <?php if ($row["gender"]=='m' ) echo 'checked'?> >Male
        </label>
        <label class="radio-inline">
-       <input type="radio" name="optradio" <?php if ($row["gender"]=='f' ) echo 'checked'?> >Female
+       <input type="radio" value="f" name="optradio" <?php if ($row["gender"]=='f' ) echo 'checked'?> >Female
        </label>
        <label class="radio-inline">
-       <input type="radio" name="optradio" <?php if ($row["gender"]=='o' ) echo 'checked'?> >Others
+       <input type="radio" value="o" name="optradio" <?php if ($row["gender"]=='o' ) echo 'checked'?> >Others
        </label>
       </div>
     </div>
@@ -151,7 +144,7 @@ if ($conn->query($sql) === TRUE) {
         <label for="bloood group"> Blood group </label>
       </div>
       <div class="col-75">
-        <select id="blood group" name="blood group">
+        <select id="blood group" name="bloodgroup">
           <option value="O+" <?php if ($row["bloodgrp"]=='O+' ) echo 'selected'?> >O+</option>
           <option value="A+" <?php if ($row["bloodgrp"]=='A+' ) echo 'selected'?> >A+</option>
           <option value="B+" <?php if ($row["bloodgrp"]=='B+' ) echo 'selected'?> >B+</option>
@@ -165,7 +158,7 @@ if ($conn->query($sql) === TRUE) {
       </div>
     </div>
 
-    <!-- <div class="row">
+    <div class="row">
       <div class="col-25">
         <label for="stt"> State </label>
       </div>
@@ -185,7 +178,7 @@ if ($conn->query($sql) === TRUE) {
     <script language="javascript">print_state("sts");</script>
     </select>
       </div>
-    </div> -->
+    </div>
 
 
     <div class="row">
@@ -197,7 +190,7 @@ if ($conn->query($sql) === TRUE) {
       </div>
     </div>
     <div class="row">
-      <input type="submit" value="Save changes">
+      <input name="submit" type="submit" value="Save changes">
     </div>
     <div class="row">
       <h2><a style="position: absolute; top:2%; left: 93%" href="logout.php">Logout</a></h2>
