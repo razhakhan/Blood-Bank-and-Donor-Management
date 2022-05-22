@@ -8,7 +8,7 @@ if(isset($_POST["submit"])){
     $bloodgrp = $_POST["country"];
     $state = $_POST["stt"];
     $city = $_POST["state"];
-    $result = mysqli_query($conn, "SELECT * FROM donors where state='$state' and city='$city' ");
+    $result = mysqli_query($conn, "SELECT * FROM donors where bloodgrp='$bloodgrp' and (state='$state' and city='$city') ");
 ?>
       
 

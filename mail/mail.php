@@ -33,7 +33,11 @@ else {
     // "<script > window.location.href='../homepage.php'; </script>";
 
     echo
-    "<script > window.close(); </script>";
+    "<script >
+    window.close();
+    window.open('../index.php'); 
+    </script>";
+
     // header("Location:homepage.php");
 }
 ?>
