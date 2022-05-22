@@ -8,7 +8,7 @@ if(isset($_POST["submit"])){
     $bloodgrp = $_POST["country"];
     $state = $_POST["stt"];
     $city = $_POST["state"];
-    $result = mysqli_query($conn, "SELECT * FROM donors ");
+    $result = mysqli_query($conn, "SELECT * FROM donors where state='$state' and city='$city' ");
 ?>
       
 
@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top img-fluid" src="images/blood-donor.jpg" alt="" ></a>
                         <div class="card-block">
-                            <h4 class="card-title"><?php echo $res["firstname"]; echo $res["lastname"];?></h4>
+                            <h4 class="card-title"><?php echo $res["firstname"]; echo " "; echo $res["lastname"];?></h4>
                             <p class="card-text"> <b> Email :</b> <?php echo $res["email"];?> </p>
                             <p class="card-text"> <b> Phone Number :</b> <?php echo $res["number"];?></p>
                             <p class="card-text"> <b> Gender :</b> <?php echo $res["gender"];?></p>
@@ -77,7 +77,9 @@ if(isset($_POST["submit"])){
                 <?php }
         }
 else {
-    echo "no records found";
+    echo "<script> alert('No Records Found'); 
+    window.close();
+    window.open('index.php'); </script>";
 } 
 } ?>
 </div>

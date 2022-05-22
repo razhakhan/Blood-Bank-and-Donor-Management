@@ -1,7 +1,7 @@
 <?php
 require 'includes/config.php';
 if(!empty($_SESSION["id"])){
-  header("Location: homepage.php");
+  header("Location: index.php");
 }
 if(isset($_POST["submit"])){
     $firstname = $_POST['firstname'];
@@ -44,7 +44,7 @@ if(isset($_POST["submit"])){
       "<script> alert('Password should be at least 8 characters, at least one number, one upper case letter and one special character.'); </script>";
     }
     elseif($password == $confirmpassword){
-      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$numb', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address')";
+      $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$numb', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address', 0)";
       mysqli_query($conn, $query);
       echo
       "<script> alert('Registration Successful'); </script>";

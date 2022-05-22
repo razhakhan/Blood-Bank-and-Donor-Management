@@ -12,9 +12,9 @@ if(!empty($_SESSION["id"])){
     $result = mysqli_query($mysqli, "SELECT * FROM donors WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
   }
-  else{
-    header("Location: homepage.php");
-  }
+else{
+    header("Location: index.php");
+}
 
 if(isset($_POST["submit"])) {
   // Attempt update query execution
@@ -28,6 +28,7 @@ if(isset($_POST["submit"])) {
   $state = $_POST['stt'];
   $city = $_POST['state'];
   $address = $_POST['Address'];
+  $nod=$_POST['nod'];
   $duplicate = mysqli_query($mysqli, "SELECT * FROM donors WHERE email = '$email' ");
   $date=explode("-",$_POST['dob']);
 
@@ -45,16 +46,17 @@ if(isset($_POST["submit"])) {
         echo "<script> alert('invalid date format'); </script>";
   }
   else {
-    $sql = "UPDATE donors SET firstname='$firstname', lastname='$lastname', email='$email', number=$numb, dob='$dob', gender='$gender', bloodgrp='$bloodgrp', state='$state', city='$city', address='$address' WHERE id=$id ";
+    $sql = "UPDATE donors SET firstname='$firstname', lastname='$lastname', email='$email', number=$numb, dob='$dob', gender='$gender', bloodgrp='$bloodgrp', state='$state', city='$city', address='$address', nod=$nod WHERE id=$id ";
     if($mysqli->query($sql) === true){
-        echo "Records were updated successfully.";
+        echo "<script> alert('Update Successful'); </script>";
+        // echo "<script> window.close(); </script>";
+        echo "<script> location.href = 'donardashboard.php'; </script>";
     } else{
         echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
     }
   }
 }
- 
-// Close connection
+
 $mysqli->close();
 ?>
 
@@ -74,7 +76,9 @@ $mysqli->close();
     }
   </style>
 </head>
-<script src="js/cities.js"></script>
+<script src="js/cities.js">
+</script>
+
 <body>
 
 <h2><b>DONOR DASHBOARD</b></h2>
@@ -117,7 +121,7 @@ $mysqli->close();
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="dateofbirth">DOB</label>
+        <label for="dob">DOB</label>
       </div>
       <div class="col-75">
         <input type="text" id="dob" name="dob" value=<?php echo $row["dob"]; ?>>
@@ -189,6 +193,17 @@ $mysqli->close();
         <textarea id="Address" name="Address"  style="height:100px" ><?php echo $row["address"];?></textarea>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="nod">No. of Donations</label>
+      </div>
+      <div class="col-75">
+        <input type="int" id="nod" name="nod" value=<?php echo $row["nod"]; ?>>
+        <b>(In case you update this field, kindly email us the valid proofs to get featured on the top donor list)</b>
+      </div>
+  </div>
+
     <div class="row">
       <input name="submit" type="submit" value="Save changes">
     </div>
