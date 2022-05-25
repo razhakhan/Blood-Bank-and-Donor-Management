@@ -7,6 +7,13 @@ if(!empty($_SESSION["id"])){
 if(isset($_POST["submit"])){
   $usernameemail = $_POST["uname"];
   $password = $_POST["psw"];
+  if($usernameemail=='admin@gmail.com' && $password=='Admin@123')
+  {
+    header("Location: Admin.html");
+  } 
+  else
+
+  {
   $result = mysqli_query($conn, "SELECT * FROM donors WHERE email = '$usernameemail' ");
   $row = mysqli_fetch_assoc($result);
   if(mysqli_num_rows($result) > 0){
@@ -29,7 +36,7 @@ if(isset($_POST["submit"])){
     echo
     "<script> alert('User Not Registered'); </script>";
   }
-}
+}}
 ?>
 
 <!DOCTYPE html>

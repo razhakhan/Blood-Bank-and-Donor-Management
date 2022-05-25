@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>Home Page</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/home2.css">
@@ -40,8 +40,8 @@ body, html {
       <a href="aboutus.html" class="w3-bar-item w3-button"><i class="fa fa-info-circle"></i> ABOUT</a>
       <a href="login.php" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
       <a href="FindBloodDonors.html" class="w3-bar-item w3-button"><i class="fa fa-search-plus"></i> FIND BLOOD DONORS</a>
-      <a href="achiementss.html" class="w3-bar-item w3-button"><i class="fa fa-star"></i> ACHIEVEMENTS </a>
-      <a href="Contact us.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT US</a>
+      <a href="acheivements2.html" class="w3-bar-item w3-button"><i class="fa fa-star"></i> ACHIEVEMENTS </a>
+      <a href="Contact us.php" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT US</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -57,8 +57,8 @@ body, html {
   <a href="aboutus.html" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
   <a href="login.php" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
   <a href="FindBloodDonors.html" onclick="w3_close()" class="w3-bar-item w3-button">FIND BLOOD DONORS</a>
-  <a href="achiementss.html" onclick="w3_close()" class="w3-bar-item w3-button">ACHIEVEMENTS</a>
-  <a href="Contact us.html" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT US</a>
+  <a href="acheivements2.html" onclick="w3_close()" class="w3-bar-item w3-button">ACHIEVEMENTS</a>
+  <a href="Contact us.php" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT US</a>
 </nav>
 
 <!-- Header with full-height image -->
@@ -132,11 +132,11 @@ function openWin() {
 }
 
 function openWin7() {
-window.open("Contact us.html");
+window.open("Contact us.php");
 }
 
 function openWin6() {
-window.open("achiementss.html");
+window.open("acheivements2.html");
 }
 
 function openWin2() {
@@ -182,7 +182,7 @@ function showSlides() {
       <h3>We're the best</h3>
       <p>We are the global leaders of blood donation campaigns,<br>saved hundreds of lives and still counting</p>
       <p>You've landed on the most trustworthy, award winning blood donation website,<br>loved by hundreds of happy users</p>
-      <p><a href="achiementss.html" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Achiements</a></p>
+      <p><a href="acheivements2.html" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Achiements</a></p>
     </div>
     <div class="w3-col m6">
       <img class="w3-image w3-round-large" src="images/114b4949772999.58be6bb04dd9f.gif" alt="Buildings" width="700" height="394">

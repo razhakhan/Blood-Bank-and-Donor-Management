@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+ 
+ body {
+  background-image: url('images6.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+.button {
+  background-color: #ddd;
+  border: none;
+  color: rgb(3, 236, 26);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: ;
+  display: inline-block;
+  margin: 14px 20px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.block {
+  display: block;
+  width: 20%;
+  border: none;
+  background-color: #92a944;
+  color: white;
+  padding: 14px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+
+.block:hover {
+  background-color: rgb(19, 19, 19);
+  color: rgb(215, 212, 217);
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  font-size:12px;
+}
+.btn:hover {
+  background-color:white;
+  color: rgb(23, 97, 180);
+}
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center" >ADMIN DASHBOARD</h2><br>
+<button class="btn" onclick="openWin()" ><i class="fa fa-home" aria-hidden="true"></i>Home</button>
+<br>
+<br>
+<br>
+<br>
+<button class="block" onclick="openWin1()" >ADD DONAR</button>
+<br><br>
+<button class="block" onclick="openWin2()" >REMOVE DONAR</button>
+<br><br>
+<button class="block" onclick="openWin3()"></i>EDIT CONTACT US DETAILS</button><br>
+<br>
+<button class="block"></i>EDIT TOP DONARS LIST</button>
+<br><br>
+<script>
+function openWin() {
+    window.open("index.php");
+  }
+function openWin1() {
+  window.open("donor-registration.php");
+}
+function openWin2() {
+  window.open("removedonar.php");
+
+}
+function openWin3() {
+  window.open("editTopDonors.php");
+  
+}
+  </script>
+
+
+
+</body>
+</html>
