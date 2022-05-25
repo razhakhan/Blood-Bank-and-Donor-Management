@@ -1,29 +1,28 @@
 <?php
+
 $link = mysqli_connect("localhost", "root", "", "donorsdb");
  
 // Check connection
 if($link === false){
-
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
 if(isset($_POST["submit"])){
   $email = $_POST['email'];
   $sel = mysqli_query($link, "SELECT * FROM donors WHERE email = '$email'");
 	if (mysqli_num_rows($sel) > 0) {
-		$sql = "DELETE FROM donors WHERE email='$email' ";
+		$sql = "UPDATE donors SET nod=0 WHERE email='$email'";
     if(mysqli_query($link, $sql)){
-    
-      echo "<script> alert('Donor removed successfully'); </script>";
+      echo "<script> alert('Updated nod to 0'); </script>";
     }
 	}
   else{
     // echo "<script> alert(' Donor doesn't exist'); </script>"  ;
     echo "Donor doesn't exist"  ;  
+  }
 }
-}
+// Close connection
 mysqli_close($link);
-
-
 ?>
 
 
@@ -161,15 +160,15 @@ text-decoration: underline;
 </style>
 </head>
 <body>
-<h1 style="text-align:center"> Remove Donar </h1>
+<h1 style="text-align:center"> Edit Top Donor List </h1>
 <div class="container"> 
 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
 <i class="fa fa-bars"></i>
 </a>
 <form action="" method="post" style="text-align: center; " >
 <div class="field">
+<label for="email">Email Address of Donor</label>
 <input type="text" name="email" required>
-<label>Email Address</label>
 </div>
 <br>
 <div class="field">

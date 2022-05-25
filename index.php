@@ -1,3 +1,21 @@
+<?php 
+  $link = mysqli_connect("localhost", "root", "", "donorsdb");
+ 
+  // Check connection
+  if($link === false){
+  
+      die("ERROR: Could not connect. " . mysqli_connect_error());
+  }
+  $result = mysqli_query($link, "SELECT * FROM donors ORDER BY nod DESC LIMIT 1");
+  $row1 = mysqli_fetch_assoc($result);
+  $result = mysqli_query($link, "SELECT * FROM donors ORDER BY nod DESC LIMIT 1,1");
+  $row2 = mysqli_fetch_assoc($result);
+  $result = mysqli_query($link, "SELECT * FROM donors ORDER BY nod DESC LIMIT 2,1");
+  $row3 = mysqli_fetch_assoc($result);
+  $result = mysqli_query($link, "SELECT * FROM donors ORDER BY nod DESC LIMIT 3,1");
+  $row4 = mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,8 +217,9 @@ function showSlides() {
       <div class="w3-card">
         <img src="images/blood-donor.jpg" alt="John" style="width:100%">
         <div class="w3-container">
-          <h3>Rohit Sharma</h3>
-          <p class="w3-opacity">Mumbai</p>
+          <h3><?php echo $row1["firstname"]." ".$row1["lastname"]; ?></h3>
+          <p class="w3-opacity"><?php echo $row1["email"]; ?></p>
+          <p class="w3-opacity"><?php echo $row1["city"]; ?></p>
         </div>
       </div>
     </div>
@@ -208,8 +227,9 @@ function showSlides() {
       <div class="w3-card">
         <img src="images/blood-donor.jpg" alt="Jane" style="width:100%">
         <div class="w3-container">
-          <h3>Shah Rukh Khan</h3>
-          <p class="w3-opacity">Kolkata</p>
+          <h3><?php echo $row2["firstname"]." ".$row2["lastname"]; ?></h3>
+          <p class="w3-opacity"><?php echo $row2["email"]; ?></p>
+          <p class="w3-opacity"><?php echo $row2["city"]; ?></p>
         </div>
       </div>
     </div>
@@ -217,8 +237,9 @@ function showSlides() {
       <div class="w3-card">
         <img src="images/blood-donor.jpg" alt="Mike" style="width:100%">
         <div class="w3-container">
-          <h3>Tom Cruise</h3>
-          <p class="w3-opacity">USA</p>
+          <h3><?php echo $row3["firstname"]." ".$row3["lastname"]; ?></h3>
+          <p class="w3-opacity"><?php echo $row3["email"]; ?></p>
+          <p class="w3-opacity"><?php echo $row3["city"]; ?></p>
         </div>
       </div>
     </div>
@@ -226,8 +247,9 @@ function showSlides() {
       <div class="w3-card">
         <img src="images/blood-donor.jpg" alt="Dan" style="width:100%">
         <div class="w3-container">
-          <h3>Vladmir Putin</h3>
-          <p class="w3-opacity">Russia</p>
+          <h3><?php echo $row4["firstname"]." ".$row4["lastname"] ; ?></h3>
+          <p class="w3-opacity"><?php echo $row4["email"]; ?></p>
+          <p class="w3-opacity"><?php echo $row4["city"]; ?></p>
         </div>
       </div>
     </div>
