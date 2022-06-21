@@ -22,6 +22,8 @@ if(isset($_POST["submit"])) {
   $lastname = $_POST['lastname'];
   $email = $_POST['email'];
   $numb = $_POST['phno'];
+  $pass = $_POST['password'];
+  $cpass = $_POST['cpassword'];
   $dob = $_POST['dob'];
   $gender = $_POST['optradio'];
   $bloodgrp = $_POST['bloodgroup'];
@@ -45,8 +47,12 @@ if(isset($_POST["submit"])) {
   {
         echo "<script> alert('invalid date format'); </script>";
   }
+  elseif($pass != $cpass){
+    echo
+    "<script> alert('Password Does Not Match'); </script>";
+  }
   else {
-    $sql = "UPDATE donors SET firstname='$firstname', lastname='$lastname', email='$email', number=$numb, dob='$dob', gender='$gender', bloodgrp='$bloodgrp', state='$state', city='$city', address='$address', nod=$nod WHERE id=$id ";
+    $sql = "UPDATE donors SET firstname='$firstname', lastname='$lastname', email='$email', number=$numb, password='$pass', dob='$dob', gender='$gender', bloodgrp='$bloodgrp', state='$state', city='$city', address='$address', nod=$nod WHERE id=$id ";
     if($mysqli->query($sql) === true){
         echo "<script> alert('Update Successful'); </script>";
         // echo "<script> window.close(); </script>";
@@ -78,6 +84,7 @@ $mysqli->close();
 </head>
 <script src="js/cities.js">
 </script>
+
 
 <body>
 
@@ -118,6 +125,22 @@ $mysqli->close();
       <div class="col-75">
         <input type="tel" id="phno" name="phno" value=<?php echo $row["number"]; ?>>
       </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-75">
+          <input type="password" id="password" name="password" value=<?php echo $row["password"]; ?> style="width:564px;height: 40px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="cpassword">Confirm Password</label>
+        </div>
+        <div class="col-75">
+          <input type="password" id="cpassword" name="cpassword" value=<?php echo $row["password"]; ?> style="width:564px;height: 40px;">
+        </div>
     </div>
     <div class="row">
       <div class="col-25">

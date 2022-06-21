@@ -6,7 +6,7 @@
 <style>
  
  body {
-  background-image: url('images6.jpg');
+  background-image: url('../images/image7.jpg');
   background-repeat: repeat;
   background-attachment: fixed;  
   background-size: cover;
@@ -65,29 +65,30 @@
 </head>
 <body>
 
-<h2 style="text-align:center" >ADMIN DASHBOARD</h2><br>
+<h1 style="text-align:center" >ADMIN DASHBOARD</h1><br>
 <button class="btn" onclick="openWin()" ><i class="fa fa-home" aria-hidden="true"></i>Home</button>
 <br>
 <br>
 <br>
 <br>
-<button class="block" onclick="openWin1()" >ADD DONAR</button>
+<button class="block" onclick="openWin1()" >ADD DONOR</button>
 <br><br>
-<button class="block" onclick="openWin2()" >REMOVE DONAR</button>
+<button class="block" onclick="openWin2()" >REMOVE DONOR</button>
 <br><br>
 <button class="block" onclick="openWin3()"></i>EDIT CONTACT US DETAILS</button><br>
 <br>
-<button class="block" onclick="openWin4()"></i>EDIT TOP DONARS LIST</button>
+<button class="block" onclick="openWin4()"></i>EDIT TOP DONORS LIST</button>
 <br><br>
 <script>
 function openWin() {
-    window.open("index.php");
+    self.close();
+    window.open("../index.php");
   }
 function openWin1() {
-  window.open("donor-registration.php");
+  window.open("../donor-registration.php");
 }
 function openWin2() {
-  window.open("removedonar.php");
+  window.open("removedonor.php");
 
 }
 function openWin3() {
@@ -98,7 +99,7 @@ function openWin4() {
   window.open("editTopDonors.php");
   
 }
-  </script>
+</script>
 
 
 

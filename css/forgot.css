@@ -1,0 +1,65 @@
+
+        body{
+            background-image:url("../images/download.png");
+             background-repeat: no-repeat;
+            background-position: 50px 20px; 
+            background-size: 26%;
+        }
+        .forgot-box {
+            position: absolute;
+            left: 340px;
+            top: 190px;
+            right: 360px;
+            bottom: 160px;
+            background-color: white;
+            border: 5px white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        
+        .forgot h5 {
+            position: relative;
+            font-size: 130%;
+            text-align: center;
+            top: -15px;
+        }
+        
+        .forgot p {
+            position: relative;
+            font-size: 100%;
+            text-align: center;
+            top: -30px;
+        }
+        
+        .email-group {
+            position: relative;
+            font-size: 100%;
+            text-align: center;
+            top: -18px;
+        }
+        
+        .submit-btn {
+            position: relative;
+            top: 20px;
+            width: 15%;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: auto;
+            background-color: rgb(10, 247, 251);
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+        }
+        
+        
+        .back h4 {
+            position: relative;
+            top:-26px;
+            right:-150px;
+            color: rgb(10, 167, 251);
+        }
+        
+        .back h5:hover {
+            color: rgb(254, 1, 1);
+            background-color: white;
+        }

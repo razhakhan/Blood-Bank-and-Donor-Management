@@ -9,7 +9,7 @@ if(isset($_POST["submit"])){
   $password = $_POST["psw"];
   if($usernameemail=='admin@gmail.com' && $password=='Admin@123')
   {
-    header("Location: Admin.html");
+    header("Location: admin/Admin.html");
   } 
   else
 
@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
-    <span class="psw"><a href="#">Forgot password?</a></span>
+    <span class="psw"><a href="forgotpassword.html">Forgot password?</a></span>
     <button type="submit" name="submit">Login</button>
   </div>
 </form>

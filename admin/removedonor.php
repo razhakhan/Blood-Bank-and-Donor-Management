@@ -17,8 +17,8 @@ if(isset($_POST["submit"])){
     }
 	}
   else{
-    // echo "<script> alert(' Donor doesn't exist'); </script>"  ;
-    echo "Donor doesn't exist"  ;  
+     echo "<script> alert(' Donor doesn't exist'); </script>"  ;
+    //echo "Donor doesn't exist"  ;  
 }
 }
 mysqli_close($link);
@@ -35,6 +35,12 @@ mysqli_close($link);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
+  body {
+  background-image: url('../images/image9.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
 .container {
   border-radius: 5px;
   background-color: #ac9d9e;
@@ -161,19 +167,21 @@ text-decoration: underline;
 </style>
 </head>
 <body>
-<h1 style="text-align:center"> Remove Donar </h1>
+<h1 style="text-align:center"> <br>Remove Donor </h1><br><br>
 <div class="container"> 
 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
 <i class="fa fa-bars"></i>
 </a>
 <form action="" method="post" style="text-align: center; " >
 <div class="field">
-<input type="text" name="email" required>
 <label>Email Address</label>
+<input type="text" name="email" required>
+
 </div>
 <br>
+<br>
 <div class="field">
-<input type="submit"  name="submit" value="SUBMIT">
+<input type="submit"  name="submit" value="submit">
 </div>
 
 </form>

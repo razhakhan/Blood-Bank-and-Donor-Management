@@ -6,11 +6,11 @@ $lname = $_POST['lastname'];
 $phno = $_POST['phno'];
 $email= $_POST['email'];
 $message= $_POST['msg'];
-$to = "razhakhan.19.cse@anits.edu.in";
+$to = "razhagarrix@gmail.com";
 $subject = "Mail From website";
 $txt ="FirstName = ". $fname . "\r\n LastName = " . $lname . "\r\n Email = " . $email . "\r\n Message =" . $message;
-$headers = "From: razhagarrix@gmail.com" . "\r\n" .
-"CC: mkoushik.19.cse@anits.edu.in";
+$headers = "From: razhakhan.19.cse@anits.edu.in" . "\r\n" .
+"CC: tpavani.19.cse@anits.edu.in";
 
 if(! (preg_match('/^[6-9][0-9]{9}$/', $phno) ) ) {
     echo
@@ -34,6 +34,7 @@ else {
 
     echo
     "<script >
+    window.close();
     window.close();
     window.open('../index.php'); 
     </script>";

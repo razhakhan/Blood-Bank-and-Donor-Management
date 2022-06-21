@@ -1,3 +1,4 @@
+ 
 <?php
 
 $link = mysqli_connect("localhost", "root", "", "donorsdb");
@@ -6,25 +7,20 @@ $link = mysqli_connect("localhost", "root", "", "donorsdb");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
 if(isset($_POST["submit"])){
   $email = $_POST['email'];
-  $sel = mysqli_query($link, "SELECT * FROM donors WHERE email = '$email'");
-	if (mysqli_num_rows($sel) > 0) {
-		$sql = "UPDATE donors SET nod=0 WHERE email='$email'";
-    if(mysqli_query($link, $sql)){
-      echo "<script> alert('Updated nod to 0'); </script>";
-    }
-	}
-  else{
-    // echo "<script> alert(' Donor doesn't exist'); </script>"  ;
-    echo "Donor doesn't exist"  ;  
-  }
+  $phno = $_POST['phno'];
+// Attempt update query execution
+$sql = "UPDATE contactus SET email='$email', phoneno=$phno WHERE id=1";
+if(mysqli_query($link, $sql)){
+    echo "Records were updated successfully.";
+} else {
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
 }
 // Close connection
 mysqli_close($link);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,17 +30,40 @@ mysqli_close($link);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
+   body {
+  background-image: url('../images/image11.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
 .container {
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #ac9d9e;
   padding: 24px;
   background-image: url('Registerasdonar .jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 100%;
+  background-position: 100% 100%;
   
 }
-
+.block {
+  display: block;
+  width: 20%;
+  border: none;
+  background-color: #d11787;
+  color: white;
+  padding: 14px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
 .wrapper{
  width: 320px;
  height:420px;
@@ -160,16 +179,29 @@ text-decoration: underline;
 </style>
 </head>
 <body>
-<h1 style="text-align:center"> Edit Top Donor List </h1>
+<h1 style="text-align:center"> Edit Admin Contact Details </h1>
+<br>
+<br>
 <div class="container"> 
 <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
 <i class="fa fa-bars"></i>
 </a>
+<br>
+<br>
 <form action="" method="post" style="text-align: center; " >
-<div class="field">
-<label for="email">Email Address of Donor</label>
+<div class="block">
+<label for="email" >Email Address</label>
 <input type="text" name="email" required>
+
 </div>
+<br>
+<br>
+<div class="block">
+    <label for="phno"> Phone No</label>
+    <input type="tel" name="phno" required>
+    
+</div>
+<br>
 <br>
 <div class="field">
 <input type="submit"  name="submit" value="SUBMIT">
