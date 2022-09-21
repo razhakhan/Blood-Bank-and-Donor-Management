@@ -14,11 +14,17 @@ if(isset($_POST["submit"])){
     if(mysqli_query($link, $sql)){
     
       echo "<script> alert('Donor removed successfully'); </script>";
+      echo
+        "<script>
+        self.close();
+        window.close();
+        window.open('Admin.html'); 
+        </script>";
     }
 	}
   else{
-     echo "<script> alert(' Donor doesn't exist'); </script>"  ;
-    //echo "Donor doesn't exist"  ;  
+    // echo "<script> alert(' Donor doesn't exist'); </script>"  ;
+    echo "Donor doesn't exist"  ;  
 }
 }
 mysqli_close($link);

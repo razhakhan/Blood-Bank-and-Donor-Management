@@ -19,28 +19,47 @@ if(isset($_POST["submit"])){
     $number    = preg_match('@[0-9]@', $password);
     $date=explode("-",$_POST['dob']);
     $specialChars = preg_match('@[^\w]@', $password);
+    $flag=0;
   if(mysqli_num_rows($duplicate) > 0){
     echo
     "<script> alert('Email already exists, please login'); </script>";
+    $flag=1;
   }
   else{
+    if(is_numeric($firstname))
+    {
+        echo "<script> alert('Invalid First Name'); </script>";
+        $flag=1;
+    }
+
+    if( is_numeric($lastname) )
+    {
+        echo "<script> alert('Invalid Last Name'); </script>";
+        $flag=1;
+    }
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       echo
       "<script> alert('invalid email format'); </script>";
+      $flag=1;
     }
     if(! (preg_match('/^[6-9][0-9]{9}$/', $numb)) ) {
       echo
       "<script> alert('invalid phone number'); </script>";
+      $flag=1;
     }
     if( !is_numeric($date[0]) || !is_numeric($date[1]) || !is_numeric($date[2]) || ! (checkdate ($date[1] ,$date[0] ,$date[2])) )
     {
         echo "<script> alert('invalid date format'); </script>";
+        $flag=1;
     }
     if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
         echo
       "<script> alert('Password should be at least 8 characters, at least one number, one upper case letter and one special character.'); </script>";
+      $flag=1;
     }
-    if($password == $confirmpassword){
+    if($password == $confirmpassword) {
+      if($flag==0) {
       $query = "INSERT INTO donors VALUES('', '$firstname', '$lastname', '$email', '$numb', '$password', '$dob', '$gender', '$bloodgrp', '$state', '$city', '$address', 0)";
       mysqli_query($conn, $query);
       echo
@@ -49,10 +68,13 @@ if(isset($_POST["submit"])){
       echo
       "<script > self.close(); window.parent.close();
       window.open('index.php'); </script>";
+      }
+      $flag=0;
     }
     else{
       echo
       "<script> alert('Password Does Not Match'); </script>";
+      $flag=0;
     }
   }
 }

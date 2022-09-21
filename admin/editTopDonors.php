@@ -10,14 +10,14 @@ if($link === false){
 if(isset($_POST["submit"])){
   $email = $_POST['email'];
   $sel = mysqli_query($link, "SELECT * FROM donors WHERE email = '$email'");
-	if (mysqli_num_rows($sel) > 0) {
+	if (mysqli_num_rows($sel)>0) {
 		$sql = "UPDATE donors SET nod=0 WHERE email='$email'";
     if(mysqli_query($link, $sql)){
       echo "<script> alert('Updated nod to 0'); </script>";
     }
 	}
   else{
-    // echo "<script> alert(' Donor doesn't exist'); </script>"  ;
+    //echo "<script> alert('Donor doesn't exist') </script>";
     echo "Donor doesn't exist"  ;  
   }
 }
