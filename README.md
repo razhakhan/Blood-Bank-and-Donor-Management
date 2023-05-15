@@ -21,6 +21,13 @@ The homepage features a list of top donors of our website. A donors needs to vol
 * Top Donors List
 * About Us page
 
+## Technologies Used
+
+* HTML
+* CSS
+* JavaScript
+* PHP
+
 ## Results
 
 Below are the screenshots of the developed web portal
@@ -44,5 +51,8 @@ Below are the screenshots of the developed web portal
 ![27](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/4efc1016-00bf-487f-9208-04293c8a3237)
 ![28](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/00a09268-afd3-4358-9d77-fe0db9331d9b)
 ![29](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/062386d6-9267-4d14-8a9b-e0e1bee0a145)
-![15](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/87b96483-217e-4b20-a61b-43fcec1231e9)
+
+## Conclusion
+
+In today’s world, where we can do many things from home, just by pressing one click, we can take advantage of that concept by making online solutions for the shortage of blood donors. The management information system helps to reduce the use of paper, so the probability of errors should be minimal. Researchers believe that improving the management information system for the blood bank and donar will make revolutionary improvements in the system. This web-based blood bank is a small contribution to serve mankind. It can save lives by educating the public about the benefits of blood donation, encourage them to donate, and manage the records of donors and people who need blood, to help the people who need blood to find the appropriate donors as soon as possible in quick, perfect, and a safe way ‒ with less effort.
 
