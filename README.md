@@ -8,15 +8,15 @@ The homepage features a list of top donors of our website. A donors needs to vol
 
 ## Features
 
-* 1. Response Web Portal
-* 2. Easy to use
-*3. Donor Registration
-*4. Find blood donors using location based search
-*5. Donor Dashboard
-*6. Contact Admin
-*7. Admin Dashboard
-*8. Add/Remove Donors
-*9. Report incorrect donor details
-*10. Achievements page for Blood Bank
-*11. Top Donors List
-*12. About Us page
+* Response Web Portal
+* Easy to use
+* Donor Registration
+* Find blood donors using location based search
+* Donor Dashboard
+* Contact Admin
+* Admin Dashboard
+* Add/Remove Donors
+* Report incorrect donor details
+* Achievements page for Blood Bank
+* Top Donors List
+* About Us page
