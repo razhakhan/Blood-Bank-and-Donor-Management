@@ -8,8 +8,8 @@ The homepage features a list of top donors of our website. A donors needs to vol
 
 ## Features
 
-*1. Response Web Portal
-*2. Easy to use
+* 1. Response Web Portal
+* 2. Easy to use
 *3. Donor Registration
 *4. Find blood donors using location based search
 *5. Donor Dashboard
