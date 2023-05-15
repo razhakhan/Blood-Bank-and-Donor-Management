@@ -8,7 +8,7 @@ The homepage features a list of top donors of our website. A donors needs to vol
 
 ## Features
 
-* Response Web Portal
+* Responsive Web Portal
 * Easy to use
 * Donor Registration
 * Find blood donors using location based search
@@ -20,3 +20,29 @@ The homepage features a list of top donors of our website. A donors needs to vol
 * Achievements page for Blood Bank
 * Top Donors List
 * About Us page
+
+## Results
+
+Below are the screenshots of the developed web portal
+
+![7](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/95437a50-8709-4a88-84a6-821a74518a4c)
+![8](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/45bf84f1-4d36-466e-b073-0c2efb5036b6)
+![9](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/54c71f83-72a8-4139-a1dc-fa9ca8b3d0f3)
+![10](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/3f9ef5cc-6d3f-4591-b912-0e7288424efc)
+![11](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/75b4ed47-3c36-4be8-aeb2-e15dec1cdf6c)
+![12](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/c01adf18-0b7c-4e6a-8826-5726c3bcc213)
+![13](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/9eb3e39d-67b2-43aa-863c-fd9a80f185a9)
+![14](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/037ff362-df41-4bc4-8c22-4581193e71e0)
+![18](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/2589c6b5-87e8-4519-830c-60a04a0b4a6c)
+![19](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/ba2386c4-730a-4b95-835c-8582bca452fc)
+![20](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/eb7982c0-b288-43fd-bc0c-0b130546f222)
+![21](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/640802c5-0b75-4876-b4ec-4e42861710ce)
+![22](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/a978e392-aa09-4085-9b26-9fda10fb74bc)
+![23](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/7ef79868-0eb5-445d-b5d6-91524b2ad7b8)
+![24](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/b5173ca4-1d3a-4baf-83f2-1e724cfada6a)
+![26](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/9f7644c9-4b71-4611-afa7-4054a509fcd0)
+![27](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/4efc1016-00bf-487f-9208-04293c8a3237)
+![28](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/00a09268-afd3-4358-9d77-fe0db9331d9b)
+![29](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/062386d6-9267-4d14-8a9b-e0e1bee0a145)
+![15](https://github.com/razhakhan/Blood-Bank-and-Donor-Management/assets/65012840/87b96483-217e-4b20-a61b-43fcec1231e9)
+
